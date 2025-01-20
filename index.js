@@ -29,13 +29,18 @@ app.post("/", async (req, res) => {
   let activityType = req.body.type;
   let noOfparticipants = req.body.participants;
   try {
-    const response = await axios.get(`https://bored-api.appbrewery.com/filter?type=${activityType}&participants=${noOfparticipants}`);
-    const result = response.data[Math.round(Math.random() * response.data.length)];
+    const response = await axios.get(
+      `https://bored-api.appbrewery.com/filter?type=${activityType}&participants=${noOfparticipants}`
+    );
+    const result =
+      response.data[Math.round(Math.random() * response.data.length)];
     console.log(result);
-    res.render("index.ejs", {data: result});
+    res.render("index.ejs", { data: result });
   } catch (error) {
     console.error(error.message);
-    res.render("index.ejs", {error: error.message || "No activities that match your criteria."});
+    res.render("index.ejs", {
+      error: error.message || "No activities that match your criteria.",
+    });
   }
 });
 
