@@ -1,9 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import env from "dotenv";
 
 const app = express();
-const port = 3000;
+env.config();
+const port = process.env.APPLICATION_PORT;
+const API_URL = process.env.API_URL
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   it shows a random activity.
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get("https://bored-api.appbrewery.com/random");
+    const response = await axios.get(`${API_URL}/random`);
     const result = response.data;
     console.log(result);
     res.render("index.ejs", { data: result });
@@ -30,7 +33,7 @@ app.post("/", async (req, res) => {
   let noOfparticipants = req.body.participants;
   try {
     const response = await axios.get(
-      `https://bored-api.appbrewery.com/filter?type=${activityType}&participants=${noOfparticipants}`
+      `${API_URL}/filter?type=${activityType}&participants=${noOfparticipants}`
     );
     const result =
       response.data[Math.round(Math.random() * response.data.length)];
