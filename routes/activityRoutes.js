@@ -1,5 +1,5 @@
 import express from "express";
-import { getRandomActivity, postActivity } from "../controllers/boredController.js"
+import { getRandomActivity, postActivity } from "../controllers/activityController.js"
 
 const router = express.Router();
 
