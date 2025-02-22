@@ -10,7 +10,7 @@ export const getRandomActivity = async (req, res) => {
     } catch (error) {
         console.error("Failed to make request:", error.message);
         res.render("index.ejs", {
-            error: error.message,
+            error: error.message || "Failed to make request, try again",
         });
     }
 }

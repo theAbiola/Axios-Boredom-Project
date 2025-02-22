@@ -5,4 +5,4 @@ In this project, I use the Axios API Library to structure API requests to the Bo
 2. use the `npm i` command to install all the npm packages specified in the package.json file.
 3. Since the application uses environment variables, you'd have to specify the application port in order to access the visualisation of the interface on the client-side.
 4.Get the API URL for the bored API from `https://bored-api.appbrewery.com/` and assign it as the value of the API_URL const.
-5. Use `node index.js` to run the Application with node.
+5. Use `node app.js` to run the Application with node.
